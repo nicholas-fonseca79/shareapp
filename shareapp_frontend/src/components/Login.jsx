@@ -8,7 +8,7 @@ import logo from '../assets/Orange.png';
 const login = () => {
 
   const responseGoogle= (response) => {
-    
+    console.log(response);
   }
   return (
     <div className='flex justify-start items-center flex-col h-screen'>
@@ -25,13 +25,18 @@ const login = () => {
           <div className='absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0'>
             <div className='p-5'>
               <img src={logo} width='430px' alt='logo' />
+            <div/>
+            <div className='p-2'>
+          
+            </div>
             <div className='shadow-2xl'>
               <GoogleLogin
-                clientId=''
+                clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}
+                
                 render={(renderProps) =>(
                   <button
                     type='button'
-                    className='bg-mainColor flex flex-col justify-center items-center p-2 rounded-xl cursor-pointer outline-none'
+                    className='bg-mainColor flex justify-center items-center p-2 rounded-lg cursor-pointer outline-none w-full  '
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
 
@@ -42,7 +47,7 @@ const login = () => {
                 )}
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
-                cookiePolicy='single_host_response'
+                cookiePolicy="single_host_origin"
               />
             </div>
             </div>
